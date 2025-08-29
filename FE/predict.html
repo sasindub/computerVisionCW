@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FMNIST Predictor</title>
+</head>
+<body>
+    <h1>Fashion MNIST Predictor</h1>
+    <input type="file" id="imageInput"/>
+    <button onclick="predict()">Predict</button>
+    <p id="result"></p>
+
+    <script>
+        async function predict() {
+            const file = document.getElementById('imageInput').files[0];
+            const formData = new FormData();
+            formData.append('file', file);
+
+            const res = await fetch('http://127.0.0.1:8000/predict', {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await res.json();
+            const classes = ["T-shirt/top","Trouser","Pullover","Dress","Coat","Sandal","Shirt","Sneaker","Bag","Ankle boot"];
+            document.getElementById('result').innerText = "Predicted class: " + classes[data.predicted_class];
+        }
+    </script>
+</body>
+</html>
