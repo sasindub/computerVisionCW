@@ -10,7 +10,7 @@ from tensorflow.keras.models import load_model
 MODEL_PATH = "model.h5"
 model = load_model(MODEL_PATH)
 
-# Class labels (must match your dataset subfolders)
+# Class labels 
 class_labels = ["plastic", "organic", "metal"]
 
 # FastAPI app

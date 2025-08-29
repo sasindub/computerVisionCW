@@ -7,20 +7,8 @@ from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.models import load_model
 
 # Paths
-DATASET_DIR = "dataset"  # update if needed
+DATASET_DIR = "dataset"  
 MODEL_PATH = "model.h5"
-
-# Re-map dataset into 3 categories (create subfolders manually or with script)
-# For training, folder structure should look like:
-# dataset/
-#   train/
-#     plastic/
-#     organic/
-#     metal/
-#   test/
-#     plastic/
-#     organic/
-#     metal/
 
 # Image preprocessing
 img_size = (64, 64)
@@ -66,7 +54,7 @@ model.compile(optimizer=Adam(learning_rate=0.001),
 history = model.fit(
     train_generator,
     validation_data=val_generator,
-    epochs=5  # increase if time allows
+    epochs=13 # increase if time allows
 )
 
 # Save model
