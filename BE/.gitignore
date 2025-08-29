@@ -1,0 +1,7 @@
+# Ignore dataset folder
+dataset/
+data/
+images/
+*.jpg
+*.jpeg
+*.png
