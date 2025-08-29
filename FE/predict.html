@@ -2,16 +2,82 @@
 <html>
 <head>
     <title>FMNIST Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 350px;
+        }
+
+        h1 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input[type="file"] {
+            margin: 15px 0;
+            padding: 10px;
+            border: 2px dashed #6c63ff;
+            border-radius: 10px;
+            background-color: #f9f9ff;
+            cursor: pointer;
+        }
+
+        button {
+            background-color: #6c63ff;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #574bff;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #444;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Fashion MNIST Predictor</h1>
-    <input type="file" id="imageInput"/>
-    <button onclick="predict()">Predict</button>
-    <p id="result"></p>
+    <div class="container">
+        <h1>Fashion MNIST Predictor</h1>
+        <input type="file" id="imageInput"/>
+        <br/>
+        <button onclick="predict()">Predict</button>
+        <p id="result"></p>
+    </div>
 
     <script>
         async function predict() {
             const file = document.getElementById('imageInput').files[0];
+            if (!file) {
+                document.getElementById('result').innerText = "⚠ Please upload an image!";
+                return;
+            }
+
             const formData = new FormData();
             formData.append('file', file);
 
