@@ -65,5 +65,5 @@ HTML: Frontend interface for testing
 
 Authors
 
-U R S L Bandara
+U R S L Bandara | 
 A N S Silva 
